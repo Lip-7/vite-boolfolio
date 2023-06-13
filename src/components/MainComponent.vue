@@ -1,10 +1,14 @@
 <template>
     <main>
-        <HeroComponent/>
+        <HeroComponent />
+        <AboutComponent />
+        <ProjectsComponent />
     </main>
 </template>
   
 <script>
+import ProjectsComponent from './MainComponents/ProjectsComponents.vue'
+import AboutComponent from './MainComponents/AboutComponent.vue';
 import HeroComponent from './MainComponents/HeroComponent.vue';
 export default {
     name: 'MainComponent',
@@ -17,8 +21,11 @@ export default {
 
     },
     components: {
-    HeroComponent,
-},
+        HeroComponent,
+        AboutComponent,
+        ProjectsComponent,
+
+    },
     mounted() {
 
     }
