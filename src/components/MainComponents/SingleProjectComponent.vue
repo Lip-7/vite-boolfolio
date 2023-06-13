@@ -6,7 +6,7 @@
                 {{project.description}}
             </p>
             <div class="project-wrapper__text-btns">
-                <a href="#" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn--hero cta-btn--projects">See
+                <a :href="project.gitUrl" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn--hero cta-btn--projects">See
                     Live</a>
                 <a :href="project.gitUrl" target="_blank" class="cta-btn text-color-main">Source Code</a>
             </div>
@@ -38,7 +38,6 @@ export default {
     },
     props: ['project', 'index'],
     mounted() {
-        console.log(this.project);
     }
 }
 </script>
