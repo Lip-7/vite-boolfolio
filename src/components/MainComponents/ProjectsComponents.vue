@@ -3,84 +3,48 @@
         <div class="container">
             <div class="project-wrapper">
                 <h2 class="section-title dark-blue-text">Projects</h2>
-
-                <!-- Each .row is a project -->
-                <article class="row">
-                    <div class="project-wrapper__text">
-                        <h3 class="project-wrapper__text-title">Project Title</h3>
-                        <p class="project-wrapper__text-info">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Deleniti voluptas, sit nam perspiciatis tempore aspernatur ullam
-                            necessitatibus impedit repellendus vero sed ipsa eos beatae ab
-                            sint saepe nostrum! Enim, perferendis.
-                        </p>
-                        <div class="project-wrapper__text-btns">
-                            <a href="#" target="_blank" rel="noopener noreferrer"
-                                class="cta-btn cta-btn--hero cta-btn--projects">See Live</a>
-                            <a href="#" target="_blank" class="cta-btn text-color-main">Source Code</a>
-                        </div>
-                    </div>
-
-                    <div class="project-wrapper__image">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <div class="thumbnail rounded">
-                                <img src="./assets/project.png" class="img-fluid" alt="Project Image" width="1366"
-                                    height="767" />
-                            </div>
-                        </a>
-                    </div>
-                </article>
-                <!-- /END Project -->
-
-                <!-- Each .row is a project -->
-                <article class="row">
-                    <div class="project-wrapper__text">
-                        <h3 class="project-wrapper__text-title">Project Title</h3>
-                        <p class="project-wrapper__text-info">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Deleniti voluptas, sit nam perspiciatis tempore aspernatur ullam
-                            necessitatibus impedit repellendus vero sed ipsa eos beatae ab
-                            sint saepe nostrum! Enim, perferendis.
-                        </p>
-                        <div class="project-wrapper__text-btns">
-                            <a href="#" target="_blank" rel="noopener noreferrer"
-                                class="cta-btn cta-btn--hero cta-btn--projects">See Live</a>
-                            <a href="#" target="_blank" class="cta-btn text-color-main">Source Code</a>
-                        </div>
-                    </div>
-
-                    <div class="project-wrapper__image">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <div class="thumbnail rounded">
-                                <img src="./assets/project.png" class="img-fluid" alt="Project Image" width="1366"
-                                    height="767" />
-                            </div>
-                        </a>
-                    </div>
-                </article>
-                <!-- /END Project -->
+                <SingleProjectComponent v-for="(proj, index) in projects" :project="proj" :index="index"/>
 
             </div>
         </div>
+        <!-- pagination -->
+
     </section>
 </template>
   
 <script>
+import axios from 'axios';
+import SingleProjectComponent from './SingleProjectComponent.vue';
 export default {
     name: 'ProjectsComponent',
     data() {
         return {
+            apiUrl: 'http://127.0.0.1:8000/api/',
+            currentPage: null,
+            lastPage: null,
+            projects: null,
 
         }
     },
     methods: {
+        getProjects(page) {
+            axios.get(this.apiUrl + 'projects', {
+                params: {
+                    page,
+                }
+            }).then((res) => {
+                console.log(res.data);
+                this.projects = res.data.results.data;
+
+            });
+        }
 
     },
     components: {
-
-    },
+    SingleProjectComponent
+},
     mounted() {
-
+        this.getProjects();
     }
 }
 </script>
