@@ -1,13 +1,12 @@
 <template>
-    <main>
-        <HeroComponent/>
-    </main>
+    <footer>
+
+    </footer>
 </template>
   
 <script>
-import HeroComponent from './MainComponents/HeroComponent.vue';
 export default {
-    name: 'MainComponent',
+    name: 'AboutComponent',
     data() {
         return {
 
@@ -17,8 +16,8 @@ export default {
 
     },
     components: {
-    HeroComponent,
-},
+
+    },
     mounted() {
 
     }
