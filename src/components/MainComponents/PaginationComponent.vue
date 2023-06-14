@@ -6,7 +6,7 @@
             <a href="#"
                 class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
         </div>
-        <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+        <div class="hidden sm:flex flex-row-reverse sm:flex-1 sm:items-center sm:justify-between">
             <div>
                 <p class="text-sm text-gray-700">
                     Showing
@@ -19,7 +19,7 @@
                 </p>
             </div>
             <div>
-                <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm z-30 relative" aria-label="Pagination">
                     <a href="#"
                         class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0" 
                         :class="store.currentPage <= 1 ? 'pointer-events-none' : ''" @click.prevent="$emit('prevPage')">

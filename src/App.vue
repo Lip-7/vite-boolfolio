@@ -1,6 +1,7 @@
 <template>
-  <HeaderComponent/>
-  <MainComponent/>
+  <HeaderComponent v-if="$route.name != 'home'"/> <!--  -->
+  <RouterView/>
+  <FooterComponent/>
 </template>
 
 <script>

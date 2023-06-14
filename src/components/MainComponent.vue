@@ -3,6 +3,7 @@
         <HeroComponent />
         <AboutComponent />
         <ProjectsComponent />
+        <ContactComponent/>
     </main>
 </template>
   
@@ -10,6 +11,7 @@
 import ProjectsComponent from './MainComponents/ProjectsComponents.vue'
 import AboutComponent from './MainComponents/AboutComponent.vue';
 import HeroComponent from './MainComponents/HeroComponent.vue';
+import ContactComponent from './MainComponents/ContactComponent.vue';
 export default {
     name: 'MainComponent',
     data() {
@@ -21,11 +23,11 @@ export default {
 
     },
     components: {
-        HeroComponent,
-        AboutComponent,
-        ProjectsComponent,
-
-    },
+    HeroComponent,
+    AboutComponent,
+    ProjectsComponent,
+    ContactComponent
+},
     mounted() {
 
     }
