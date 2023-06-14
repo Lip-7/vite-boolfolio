@@ -13,11 +13,11 @@
         </div>
 
         <div class="project-wrapper__image">
-            <a href="#" target="_blank" rel="noopener noreferrer">
+            <router-link :to="{name: 'project', params: {slug: project.slug}}" rel="noopener noreferrer">
                 <div class="thumbnail rounded">
                     <img :src="rndmImg" class="img-fluid" alt="Project Image" width="1366" height="767" />
                 </div>
-            </a>
+            </router-link>
         </div>
     </article>
 </template>

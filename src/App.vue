@@ -1,5 +1,5 @@
 <template>
-  <HeaderComponent v-if="$route.name != 'home'"/> <!--  -->
+  <HeaderComponent v-if="$route.name != 'home'"/>
   <RouterView/>
   <FooterComponent/>
 </template>

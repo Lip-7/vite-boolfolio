@@ -1,0 +1,54 @@
+<template>
+    <main class="my-10 mt-20 min-h-[600px]">
+        <div v-if="project" class="container mx-auto text-start">
+            <h1 class="text-5xl font-bold text-[#272341] text-center mb-11">{{ project.name }}</h1>
+            <div class="text-3xl font-bold text-[#272341] my-6">
+                <h3 class="text-4xl mb-2">Description</h3>
+                <p>{{ project.description }}</p>
+            </div>
+            <div class="text-3xl font-bold text-[#272341] my-6">
+                <h3 class="text-4xl mb-2">Project Url</h3>
+                <a :href="project.gitUrl">{{ project.gitUrl }}</a>
+            </div>
+            <div class="text-3xl font-bold text-[#272341] my-6">
+                <h3 class="text-4xl mb-2">Framework</h3>
+                <h6>{{ project.framework.name }}</h6>
+            </div>
+        </div>
+    </main>
+</template>
+  
+<script>
+import { store } from '../../store/store';
+import axios from 'axios';
+export default {
+    name: 'ProjectView',
+    data() {
+        return {
+            slug: this.$route.params.slug,
+            project: null,
+        }
+    },
+    methods: {
+        getData() {
+            axios.get(store.apiUrl + 'projects/' + this.slug).then(res => {
+                if (!res.data.success) {
+                    return this.$router.push({name: 'notFound'})
+                }
+                console.log(res.data.results);
+                this.project = res.data.results;
+                    
+                
+            });
+        }
+    },
+    components: {
+
+    },
+    mounted() {
+        this.getData();
+    }
+}
+</script>
+  
+<style lang="scss" scoped></style>
