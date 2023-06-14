@@ -6,7 +6,7 @@
                 <SingleProjectComponent v-for="(proj, index) in projects" :project="proj" :index="index"/>
             </div>
         </div>
-        <PaginationComponent @nextPage="changePage('+')" @prevPage="changePage('-')" @goPage="changePage(page)" v-if="queryLoaded" :pageData="queryData" />
+        <PaginationComponent @nextPage="changePage('+')" @prevPage="changePage('-')" v-if="queryLoaded" :pageData="queryData" />
     </section>
 </template>
   
@@ -33,13 +33,11 @@ export default {
     },
     methods: {
         getProjects(page) {
-            console.log(page);
             axios.get(this.apiUrl + 'projects', {
                 params: {
                     page,
                 }
             }).then((res) => {
-                console.log(res.data);
                 this.queryData = res.data;
                 this.projects = res.data.results.data;
                 store.currentPage = res.data.results.current_page;
@@ -48,6 +46,7 @@ export default {
             });
         },
         changePage(prop) {
+            console.log(prop);
             store.currentPage = (prop === '+') ?
                 (store.currentPage + 1) :
                 ((prop === '-') ?
