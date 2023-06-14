@@ -19,7 +19,6 @@
                 <div class="badges flex gap-2">
                     <span v-for="tech in project.technologies" class="text-xl py-2 px-3 rounded-full " :class="store.techColors[tech.slug]"> {{ tech.name }}</span>
                 </div>
-                <span class="hidden bg-orange-400 bg-violet-400 bg-emerald-400 bg-sky-400 bg-zinc-400 bg-red-400 bg-amber-400 bg-lime-400 bg-fuchsia-400"></span>
             </div>
         </div>
     </main>
